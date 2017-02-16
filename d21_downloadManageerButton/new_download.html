@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下载</title>
+    <link rel="stylesheet" href="css/new_popup.css?v=sdasd">
+    <script src="newpopup.js"></script>
+</head>
+<body>
+<div id="wraper" class="box">
+    <header class="header">
+        <div class="tool" id="search">
+                <span class="kw">
+                    <input type="text" id="keyword">
+                </span>
+            <a href="javascript:;" class="btn del"><!--<img src="icons/del_defaut.png" alt="">--></a>
+            <a href="javascript:;" class="btn folder act"><img src="" alt=""></a>
+        </div>
+        <div class=""></div>
+    </header>
+    <section class="content" style="display: none;">
+        <dl class="items-list">
+            <dt class="time-type">今天</dt>
+            <dd class="item">
+                <div class="item-icon">
+                    <span class="img html"></span>
+                </div>
+                <div class="item-detail">
+                    <span class="name">dddd.txt <i>(210MB)</i></span>
+                    <a href="" class="src">http://wewewqeq.com</a>
+                </div>
+                <div class="item-time">
+                    <p class="end-time" title="下载完成时间">2014/12/23 15:23</p>
+                    <p class="period" title="用时">12
+                        <small>h</small>
+                        </small>5
+                        <small>m</small>
+                        16
+                        <small>s</small>
+                    </p>
+                </div>
+                <div class="item-remove">
+                    <span class="img remove"></span>
+                </div>
+            </dd>
+            <dd class="item downloding" id="downloading">
+                <div class="process">
+                    <div class="moving"></div>
+                </div>
+                <div class="prefix">
+                    <span data-name="name">a.text</span>
+                    <span data-key="url">http://asdasdasdasdas.com</span>
+                </div>
+                <div class="item-icon">
+                    <span class="img stop"></span>
+                    <span class="img pasue"></span>
+                </div>
+            </dd>
+        </dl>
+    </section>
+    <section class="content" id="downlist">
+        <dl class="items-list">
+            <dt class="time-type">今天</dt>
+            <dd class="item" style="display: none">
+                <div class="item-icon">
+                    <span class="img html"></span>
+                </div>
+                <div class="item-detail">
+                    <span class="name">dddd.txt <i>(210MB)</i></span>
+                    <a href="" class="src">http://wewewqeq.com</a>
+                </div>
+                <div class="item-time">
+                    <p class="end-time" title="下载完成时间">2014/12/23 15:23</p>
+                    <p class="period" title="用时">12
+                        <small>h</small>
+                        </small>5
+                        <small>m</small>
+                        16
+                        <small>s</small>
+                    </p>
+                </div>
+                <div class="item-remove">
+                    <span class="img remove"></span>
+                </div>
+            </dd>
+        </dl>
+    </section>
+</div>
+<!--<div class="reward" id="reward">-->
+<!--谢谢回顾-->
+<!--</div>-->
+<script type="html/tmpl" id="tmpl_done_">
+    <dd class="item" id="item_{$id}">
+        <div class="item-icon">
+            <span class="img {$fileType}"></span>
+        </div>
+        <div class="item-detail">
+            <span class="name">{$name} <i>({$data_size})</i></span>
+            <a href="{$url}" class="src">{$url}</a>
+        </div>
+        <div class="item-time">
+            <p class="end-time" title="{$I18n_endTime}">{$endTime}</p>
+            <p class="period" title="{$I18n_period}">{$period}</p>
+        </div>
+        <div class="item-remove">
+            <span class="img remove"></span>
+        </div>
+    </dd>
+</script>
+<script type="html/tmpl" id="tmpl_done">
+    <dd class="item" id="item_{$id}">
+        <div class="item-icon">
+            <span class="img {$fileType}"></span>
+        </div>
+        <div class="item-detail">
+            <span class="name">{$name}<i>({$data_size})</i></span>
+            <a href="{$url}" class="src" title="{$url}">{$url}</a>
+        </div>
+        <div class="item-time">
+            <p class="end-time" title="下载完成时间">{$endTime}</p>
+            <p class="period" title="用时">{$period}</p>
+        </div>
+        <div class="item-remove">
+            <span class="img remove"></span>
+        </div>
+    </dd>
+</script>
+<script type="html/tmpl" id="tmpl_loading">
+<dd class="item downloding" >
+    <div class="process">
+        <div class="moving"></div>
+    </div>
+    <div class="prefix">
+        <span data-name="name">{$name}</span>
+        <span data-key="url">{$url}</span>
+    </div>
+    <div class="item-icon">
+        <span class="img stop"></span>
+        <span class="img pasue"></span>
+    </div>
+</dd>
+</script>
+</body>
+</html>

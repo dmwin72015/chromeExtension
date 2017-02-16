@@ -1,0 +1,16 @@
+插件的文件一共有
+	1. background.js (插件后台运行的js)
+	2. manage.js(插件弹出页面中的js)
+	3. content.js(插件注入到页面中JS)
+	4. 页面中本来存在的JS
+
+
+
+==========================================
+
+数据传递:
+    一、background  ----->  contentScript
+         chrome.tabs.sendMessage
+
+    二、contentScript ----->  background
+         chrome.extension.sendMessage

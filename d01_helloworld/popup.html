@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+    body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        margin: 0;
+    }
+    #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+        background-color: coral;
+        height: 400px;
+    }
+     a { font-size: 14px; text-decoration: none; } 
+     #wraper{width: 300px;padding:10px;outline: none;}
+     #wraper>a { display: inline-block; padding: 3px 10px; border: 1px solid #ccc; color: #333;white-space:nowrap; } 
+     #wraper>a:hover{ color:#e4393c; border-color: #e4393c; } 
+     #wraper>a.selected{ background-color: #e4393c; color:#fff;border-color: #e4393c;  }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script src="helloworld.js"></script>
+</head>
+
+<body>
+    <!-- <div id="status"></div> -->
+    <div id="wraper">
+        <a href="javascript:;" data-val="0" class="selected">显示全部</a>
+        <a href="javascript:;" data-val="1">只显示第三方</a>
+        <a href="javascript:;" data-val="2">只显示JD</a>
+    </div>
+</body>
+
+</html>

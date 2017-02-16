@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie 管理</title>
+    <style>
+        h2 {
+            text-align: center
+        }
+
+        #remove_button {
+
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+        }
+
+        th {
+            min-width: 100px;
+        }
+    </style>
+    <script src="manage.js"></script>
+</head>
+<body>
+<h2>Cookies! ... Nom Nom Nom...</h2>
+<button id="remove_button">删除所有</button>
+<div id="filter_div">
+    Filter: <input id="filter" type="text">
+    <button>x</button>
+</div>
+<br/>
+<div id="summary_div">
+    Showing <span id="filter_count"></span> of <span id="total_count"></span> cookie domains.
+    <span id="delete_all_button"></span>
+</div>
+<br/>
+<table id="cookies">
+    <tr class="header">
+        <th>站点</th>
+        <th>Cookies</th>
+        <th>操作</th>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,435 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    /*background-color: #f0f3f4;*/
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+h1.title, h3.title {
+    text-align: center;
+}
+
+.box {
+    padding: 5px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/*
+    功能性class
+*/
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: " ";
+    display: table;
+    clear: both;
+    height: 0;
+}
+
+.tran_500ms {
+    transition: all 0.5s
+}
+
+/**************************************************************/
+.section {
+    margin-bottom: 20px;
+}
+
+.section.header {
+    /*border: 1px solid #999;*/
+    /*border:1px solid #dee5e7;*/
+}
+
+.btn-group input[type=button] {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-group > .btn + .btn {
+    margin-left: 8px;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0.5em 1em;
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #e7eaec;
+    cursor: pointer;
+    transition: all 0.5s
+}
+
+.btn:hover {
+    background-color: #f2f2f2;
+    border-color: #ced0d2;
+    color: #222;
+}
+
+.btn.danger {
+    background-color: #F05050;
+    color: #fff;
+    border-color: #F05050;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table thead th {
+    text-align: left;
+}
+
+.form-input > input, .btn-group > input {
+    border: 1px solid #e7eaec;
+    border-radius: 2px;
+    padding: 0.5em 1em;
+}
+
+.form-input > input[type=text]:focus, .btn-group > input[type=text]:focus {
+    border-color: #75aee8;
+}
+
+.table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    word-wrap: break-word;
+}
+
+.content table, .table td, .table th {
+    border: 1px solid #e7eaec;
+}
+
+.table th, .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table th {
+    padding: 6px 5px;
+}
+
+.table td {
+    padding: 3px 5px;
+}
+
+tr > td:last-child, tr > th:last-child {
+    width: 15%;
+}
+
+.form-input > input, .form-input > a {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#keyword {
+    width: 240px;
+    font-size: 14px;
+}
+
+#search {
+    display: inline-block;
+    height: 17px;
+}
+
+.close, .cookie-num {
+    cursor: pointer;
+}
+
+.cookie-num {
+    color: #333;
+    text-decoration: underline;
+}
+
+.cookie-num:hover {
+    color: #088fe8;
+}
+
+/*
+    body下的元素设置成position: absolute;
+    而body没有定位属性的时候,是以HTML定位的,这个时候的100%,就可能小于body的高度
+*/
+body {
+    min-height: 100%;
+    position: relative;
+}
+
+body.modal-active #container {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: #000;
+    transition: all 0.2s;
+}
+
+.cookie-content {
+    position: fixed;
+    padding: 10px;
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px;
+    top: 50px;
+    background-color: #fff;
+    border: 1px solid #777;
+    transition: all 0.5s;
+}
+
+.cookie-content.hide {
+    opacity: 0;
+    top: 0;
+}
+
+.cookie-content .toolbar {
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: -22px;
+    top: -22px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    border: 1px solid #777;
+    -webkit-clip-path: circle(75% at 83% 19%);
+    clip-path: circle(75% at 83% 19%);
+}
+
+.close:after, .close:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 60%;
+    background-color: #999;
+    transition: all 0.2s;
+
+}
+
+.close:after {
+    transform: translate(-50%, 33.3%) rotate(45deg);
+}
+
+.close:before {
+    transform: translate(-50%, 33.3%) rotate(-45deg);
+}
+
+.close:hover {
+    border-color: #F05050;
+    background-color: #F05050;
+    clip-path: circle(100% at 83% 19%);
+    box-shadow: 0 0 #fff;
+}
+
+.close:hover:after, .close:hover:before {
+    background-color: #fff;
+    border-color: #F05050;
+}
+
+.cookie-content, .cookie-content .close, .boxShadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+}
+
+table.detail-table {
+    table-layout: fixed;
+}
+
+table.detail-table thead th:nth-child(1) {
+    width: 30px;
+}
+
+table.detail-table thead th:nth-child(5) {
+    width: 140px;
+}
+
+table.detail-table thead th:nth-child(n+6) {
+    width: 50px;
+}
+
+.cookie-num-title {
+    position: relative;
+    cursor: pointer;
+}
+
+.order-arrow {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    border-width: 5px;
+    border-style: solid;
+    right: 5px;
+    top: 50%;
+
+}
+
+.order-arrow.down {
+    margin-top: -2.5px;
+    border-color: #333 transparent transparent transparent;
+}
+
+.order-arrow.up {
+    margin-top: -5px;
+    border-color: transparent transparent #333 transparent;
+}
+
+.page {
+    text-align: center;
+}
+
+.page > a {
+    display: inline-block;
+    padding: 4px 1em;
+    border: 1px solid #e7eaec;
+    border-radius: 3px;
+    color: #666;
+}
+.page > a+a{
+    margin-left: 5px;
+}
+.page > a:hover {
+    background-color: #f2f2f2;
+    border-color: #ced0d2;
+    color: #222;
+}
+
+.page > a.curr {
+    background-color: #F05050;
+    border-color: #F05050;
+    color: #FFF;
+    font-weight: 700;
+    cursor: default;
+}
+
+.page > a.unable {
+    border-color: #e7eaec;
+    background-color: #f2f2f2;
+    color: #999;
+    cursor: default;
+}
+
+.omitted {
+    display: inline-block;
+    padding: 4px 1em;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+}
+
+.omitted > .all-page {
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    border: 1px solid #d8d8d8;
+    left: 50%;
+    bottom: 80%;
+    margin-left: -100px;
+    /*padding-right: 8px;*/
+}
+
+.all-page:after, .all-page:before {
+    content: " ";
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border: solid transparent;
+}
+
+.all-page:after {
+    border-top-color: #fff;
+    border-width: 4px;
+    margin-left: -4px;
+}
+
+.all-page:before {
+    border-top-color: #afadad;
+    border-width: 5px;
+    margin-left: -5px;
+}
+
+.scroll-bar {
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: #d8d8d8;
+}
+
+.scroll-bar > .bar-block {
+    position: absolute;
+    top:10px;
+    left:0;
+    width: 100%;
+    height:40px;
+    background-color:#F05050;
+}
+
+.all-page > .inner-content {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.all-page > .inner-content > span {
+    display: inline-block;
+    padding: 2px 8px;
+    cursor: pointer;
+    float: left;
+}
+
+.all-page > .inner-content > span:hover {
+    color: #4d90fe;
+    text-decoration: underline;
+}
+
+/**************************/
+/*阴影例子*/
+.box-shadow-6 {
+    box-shadow: -10px 0 10px red, /*左边阴影*/ 10px 0 10px yellow, /*右边阴影*/ 0 -10px 10px blue, /*顶部阴影*/ 0 10px 10px green; /*底边阴影*/
+}

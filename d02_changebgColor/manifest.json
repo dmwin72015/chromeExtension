@@ -1,0 +1,35 @@
+{
+    "name": "Page Redder",
+    "description": "Make the current page red",
+    "version": "2.0",
+    "permissions": [
+        "tabs"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "page_action": {
+        "default_icon": {
+            "19": "cnblogs_19.png",
+            "38": "cnblogs_38.png"
+        },
+        "default_title": "Make this page red"
+            // "default_popup" :"popup.html"
+    },
+    "manifest_version": 2,
+    "content_scripts": [{
+        "matches": ["https://*.chrome.com/*", "http://fis.com/*"],
+        "js": ["content.js"]
+    }],
+    "content_security_policy": "script-src 'self' https://cdn.bootcss.com; object-src 'self'"
+}
+/*
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "http://fis.com/*",
+        "<all_urls>",
+        "contextMenus"
+    ],
+*/

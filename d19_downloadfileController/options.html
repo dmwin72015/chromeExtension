@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下载文件</title>
+    <script src="options.js"></script>
+</head>
+<body>
+<table id=rules></table>
+<button id=new>添加规则</button>
+<table hidden>
+    <tr id=rule-template hidden>
+        <td class=nowrap>
+            <button class=move-up>&uarr;</button>
+            <button class=move-down>&darr;</button>
+        </td>
+        <td>
+            <select class=matcher>
+                <option value=hostname>Hostname</option>
+                <option value=url-regex>URL正则匹配</option>
+                <option value=default>默认名称</option>
+                <option value=default-regex>默认名称正则</option>
+                <option value=js>Javascript</option>
+            </select>
+            <input type=text class=match-param>
+            <select class=action>
+                <option value=overwrite>覆盖</option>
+                <option value=prompt>弹出确认框</option>
+                <option value=js>Javascript</option>
+            </select>
+            <textarea class=action-js rows=5 cols=83>
+                console.log(item.url)
+                console.log(item.filename)
+                // http://developer.chrome.com/extensions/downloads.html#type-DownloadItem
+                // http://developer.chrome.com/extensions/downloads.html#type-FilenameConflictAction
+                suggest('hello.txt', 'overwrite')
+            </textarea>
+        </td>
+        <td><span class=nowrap><input type=checkbox class=enabled checked>
+      <label class=enabled-label>Enabled</label></span>
+            <button class=remove>Remove</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

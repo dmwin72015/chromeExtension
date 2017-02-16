@@ -1,0 +1,27 @@
+{
+  "name": "Cookie API 测试",
+  "version": "0.8",
+  "description": "Testing Cookie API",
+  "permissions": [
+    "cookies",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "16": "cookie.png",
+    "48": "cookie.png",
+    "128": "cookie.png"
+  },
+  "browser_action": {
+    "default_icon": "cookie.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false//是否持续在后台运行
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://cdn.datatables.net https://cdn.bootcss.com; object-src 'self'"
+}

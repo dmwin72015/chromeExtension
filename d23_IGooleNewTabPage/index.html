@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的最爱</title>
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="static/js/mod.js"></script>
+</head>
+
+<body>
+    <div id="bg" class="page-wraper">
+        <div class="inner">
+            <div id="clock">
+                <div class="clock clearfix"></div>
+            </div>
+            <canvas id="src_clock"></canvas>
+        </div>
+    </div>
+    <div id="content" class="page-wraper">
+        <div class="clearfix" id="search">
+            <!--<div class="logo"></div>-->
+            <div class="search-form ">
+                <form action="">
+                    <span class="fbg swdp-wrap">
+                    <input type="text" id="swd" autocomplete="off">
+                </span>
+                    <span class="fbg sbt-wrap">
+                    <input type="button" value="搜索" id="sbt">
+                </span>
+                </form>
+                <div class="allsug hide">
+                    <ul id="sugglist"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar r" id="rsidebar">
+        <p class="tab btn">
+            <span class="tabopt " data-content="notice">通知</span>
+            <span class="tabopt active" data-content="functions">功能</span>
+        </p>
+        <div class="content">
+            <div class="content-opt hide" data-content="notice">
+                <dl class="notice-list">
+                    <dt class="date"> 今天 <i class="close"></i></dt>
+                    <dd class="notice-opt">
+                        <p class="notice-title">
+                            迅雷
+                        </p>
+                        <div class="notice-content">
+                            今天又36个软件需要更新
+                        </div>
+                    </dd>
+                    <dd class="notice-opt">
+                        <p class="notice-title">
+                            优酷
+                        </p>
+                        <div class="notice-content">
+                            最新上线20几电视剧
+                        </div>
+                    </dd>
+                    <dd class="notice-opt">
+                        <p class="notice-title">
+                            优酷
+                        </p>
+                        <div class="notice-content">
+                            最新上线20几电视剧
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="content-opt fn " data-content="functions">
+                <div class="fn-group">
+                    <section class="fn-opt">
+                        <a class="fn-logo" href="javascript:;">
+                            <img src="static/img/huaban.png" alt="">
+                        </a>
+                        <p class="fn-name">设置</p>
+                    </section>
+                    <section class="fn-opt">
+                        <a class="fn-logo" href="javascript:;">
+                            <img src="static/img/huaban.png" alt="">
+                        </a>
+                        <p class="fn-name">花瓣4</p>
+                    </section>
+                    <section class="fn-opt">
+                        <a class="fn-logo" href="##">
+                            <img src="static/img/huaban.png" alt="">
+                        </a>
+                        <p class="fn-name">花瓣4</p>
+                    </section>
+                    <section class="fn-opt">
+                        <a class="fn-logo" href="javascript:;">
+                            <img src="static/img/huaban.png" alt="">
+                        </a>
+                        <p class="fn-name">花瓣4</p>
+                    </section>
+                </div>
+            </div>
+            <div></div>
+        </div>
+        <footer class="bar-foot">
+            <span class="item add"></span>
+            <span class="item del"></span>
+        </footer>
+        <div class="setting" id="setbtn">
+            <span class="r"></span>
+            <span class="l"></span>
+        </div>
+    </div>
+</body>
+<script src="static/js/jquery-3.1.1.min.js"></script>
+<script src="static/js/lib/keyCode.js"></script>
+<script src="static/js/lib/tool-class.js"></script>
+<script src="static/js/lib/jqueryCookie.js"></script>
+<script src="static/js/lib/clock.js"></script>
+<script src="static/js/lib/weather.js"></script>
+<script src="static/js/index.js"></script>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name" : "Content settings",
+  "version" : "0.2",
+  "description" : "Shows the content settings for the current site.",
+  "permissions": [ "contentSettings", "tabs" ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2,
+  "content_scripts": [{
+    "matches": ["https://*.chrome.com/*", "http://fis.com/*"],
+    "js": ["content.js"]
+  }]
+}

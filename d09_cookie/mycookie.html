@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie 管理</title>
+    <link rel="stylesheet" href="mymanage.css">
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="mymanage.js"></script>
+</head>
+<body>
+<div class="box" id="container">
+    <h1 class="title">COOKIE 管理</h1>
+    <div class="section header clearfix" id="header">
+        <div class="btn-group pull-right">
+            <input type="button" class="btn danger" value="清除所有COOKIE" id="clearAll">
+        </div>
+    </div>
+
+    <div class="section content">
+        <p class="form-input">
+            <input type="text" id="keyword">
+            <a href="javascript:;" class="btn" id="search">搜索</a>
+        </p>
+        <table class="table" id="contentTable">
+            <thead>
+            <tr>
+                <th></th>
+                <th>站点(domain)</th>
+                <th class="cookie-num-title">Cookie数量 <i class="order-arrow down"></i></th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="section page" id="page"></div>
+    <!-- <div class="section page" id="page" style="display: none">
+         <a href="javascript:;" class="prev unable">PREV</a>
+         <a href="javascript:;" class="curr">1</a>
+         <a href="javascript:;">2</a>
+         <a href="javascript:;">3</a>
+         <a href="javascript:;">4</a>
+         <a href="javascript:;">5</a>
+         <a href="javascript:;">6</a>
+         <a href="javascript:;">7</a>
+         <a href="javascript:;">8</a>
+         <div class="omitted">
+             <span>.....</span>
+             <div class="all-page">
+                 <div class="inner-content">
+
+                 </div>
+                 <div class="scroll-bar">
+                 <span class="bar-block"></span>
+                 </div>
+             </div>
+         </div>
+         <a href="javascript:;">18</a>
+         <a href="javascript:;">19</a>
+         <a href="javascript:;">20</a>
+         <a href="javascript:;" class="next">NEXT</a>
+     </div>-->
+</div>
+<div class="mask" style="display: none"></div>
+<div class=""></div>
+<script type="html/tmpl" id="popup_detail_tmpl">
+<div class="cookie-content hide" data-domain="{%domain%}">
+    <div class="toolbar ">
+        <a href="javascript:;" class="close"></a>
+    </div>
+    <h3 class="title">{%domain%}</h3>
+    <table class="table detail-table" style="">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Path</th>
+            <th>Expires</th>
+            <th>Size</th>
+            <th>Http</th>
+            <th>Secure</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        {%content%}
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+</script>
+<script type="html/tmpl" id="td_tmpl">
+    <tr data-domain="{%domain%}" data-num="{%num%}" >
+        <td>{%index%}</td>
+        <td>{%domain%}</td>
+        <td>
+            <a class="cookie-num">{%num%}</a>
+        </td>
+        <td class="btn-group">
+            <input type="button" class="btn detail" value="明细"><input type="button" class="btn danger" value="删除">
+        </td>
+    </tr>
+
+
+
+
+
+
+
+
+</script>
+<script type="html/tmpl" id="td_tmpl_cookie">
+    <tr>
+        <td>{%index%}</td>
+        <td title="{%name%}" >{%name%}</td>
+        <td title="{%value%}" >{%value%}</td>
+        <td title="{%path%}" >{%path%}</td>
+        <td title="{%expires%}" >{%expires%}</td>
+        <td title="{%size%}" >{%size%}</td>
+        <td title="{%http%}" >{%http%}</td>
+        <td title="{%secure%}" >{%secure%}</td>
+        <td class="btn-group" ><a href="javascript:;" class="del_single_cookie">删除</a></td>
+    </tr>
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

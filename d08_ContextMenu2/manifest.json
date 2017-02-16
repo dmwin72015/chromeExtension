@@ -1,0 +1,22 @@
+{
+  "name": "自定义右键菜单(有事件页面)",
+  "description": "Shows some of the features of the Context Menus API using an event page",
+  "version": "0.7",
+  "permissions": [
+    "contextMenus",
+    "https://developer.chrome.com/*"
+  ],
+  "background": {
+    "persistent": false,//是否持续在后台运行
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "page_action": {
+    "default_icon": "cookie.png"
+  },
+  "icons": {
+    "16": "cookie.png"
+  },
+  "manifest_version": 2
+}

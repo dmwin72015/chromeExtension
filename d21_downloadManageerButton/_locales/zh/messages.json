@@ -1,0 +1,426 @@
+{
+  "extName": {
+    "message": "下载管理",
+    "description": "管理下载文件"
+  },
+  "extDesc": {
+    "message": "来自Google的例子",
+    "description": "来自Google开发者API sample"
+  },
+  "badChromeVersion": {
+    "message": "这个Dowload API 仅可以在canary ,dev ,beta 版本.",
+    "description": ""
+  },
+  "tabTitle": {
+    "message": "下载",
+    "description": "tab标题"
+  },
+  "searchPlaceholder": {
+    "message": "搜索下载",
+    "description": ""
+  },
+  "clearAllTitle": {
+    "message": "删除所有可见下载",
+    "description": ""
+  },
+  "openDownloadsFolderTitle": {
+    "message": "打开下载目录",
+    "description": ""
+  },
+  "zeroItems": {
+    "message": "没有下载项.",
+    "description": ""
+  },
+  "searching": {
+    "message": "传送大量的数据...",
+    "description": ""
+  },
+  "zeroSearchResults": {
+    "message": "没有找到匹配项",
+    "description": ""
+  },
+  "managementPermissionInfo": {
+    "message": "一些文件被扩展下载.",
+    "description": ""
+  },
+  "grantManagementPermission": {
+    "message": "显示指向下载文件的扩展程序的链接",
+    "description": ""
+  },
+  "showOlderDownloads": {
+    "message": "显示以前的下载",
+    "description": ""
+  },
+  "loadingOlderDownloads": {
+    "message": "载入更早的下载",
+    "description": ""
+  },
+  "openTitle": {
+    "message": "打开",
+    "description": ""
+  },
+  "pauseTitle": {
+    "message": "暂停",
+    "description": ""
+  },
+  "resumeTitle": {
+    "message": "恢复",
+    "description": ""
+  },
+  "cancelTitle": {
+    "message": "取消",
+    "description": ""
+  },
+  "removeFileTitle": {
+    "message": "删除文件",
+    "description": ""
+  },
+  "eraseTitle": {
+    "message": "删除",
+    "description": ""
+  },
+  "retryTitle": {
+    "message": "重试",
+    "description": ""
+  },
+  "referrerTitle": {
+    "message": "Referrer",
+    "description": ""
+  },
+  "month0abbr": {
+    "message": "一月",
+    "description": ""
+  },
+  "month1abbr": {
+    "message": "二月",
+    "description": ""
+  },
+  "month2abbr": {
+    "message": "三月",
+    "description": ""
+  },
+  "month3abbr": {
+    "message": "四月",
+    "description": ""
+  },
+  "month4abbr": {
+    "message": "五月",
+    "description": ""
+  },
+  "month5abbr": {
+    "message": "六月",
+    "description": ""
+  },
+  "month6abbr": {
+    "message": "七月",
+    "description": ""
+  },
+  "month7abbr": {
+    "message": "八月",
+    "description": ""
+  },
+  "month8abbr": {
+    "message": "九月",
+    "description": ""
+  },
+  "month9abbr": {
+    "message": "十月",
+    "description": ""
+  },
+  "month10abbr": {
+    "message": "十一月",
+    "description": ""
+  },
+  "month11abbr": {
+    "message": "十二月",
+    "description": ""
+  },
+  "openWhenCompleteFinishing": {
+    "message": "Opening in just a moment",
+    "description": ""
+  },
+  "timeLeftFinishing": {
+    "message": "完成...",
+    "description": ""
+  },
+  "openWhenCompleteDays": {
+    "message": "在$days$d $hours$h打开",
+    "description": "",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "2"
+      },
+      "hours": {
+        "content": "$2",
+        "example": "23"
+      }
+    }
+  },
+  "timeLeftDays": {
+    "message": "$days$d $hours$h 剩余",
+    "description": "",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "2"
+      },
+      "hours": {
+        "content": "$2",
+        "example": "23"
+      }
+    }
+  },
+  "openWhenCompleteHours": {
+    "message": "在 $hours$h $mins$m 打开",
+    "description": "",
+    "placeholders": {
+      "hours": {
+        "content": "$1",
+        "example": "23"
+      },
+      "mins": {
+        "content": "$2",
+        "example": "59"
+      }
+    }
+  },
+  "timeLeftHours": {
+    "message": "$hours$h $mins$m 剩余",
+    "description": "",
+    "placeholders": {
+      "hours": {
+        "content": "$1",
+        "example": "23"
+      },
+      "mins": {
+        "content": "$2",
+        "example": "59"
+      }
+    }
+  },
+  "openWhenCompleteMinutes": {
+    "message": "在 $mins$m $sec$s 打开",
+    "description": "",
+    "placeholders": {
+      "mins": {
+        "content": "$1",
+        "example": "59"
+      },
+      "sec": {
+        "content": "$2",
+        "example": "59"
+      }
+    }
+  },
+  "timeLeftMinutes": {
+    "message": "$mins$m $sec$s 剩余",
+    "description": "",
+    "placeholders": {
+      "mins": {
+        "content": "$1",
+        "example": "59"
+      },
+      "sec": {
+        "content": "$2",
+        "example": "59"
+      }
+    }
+  },
+  "openWhenCompleteSeconds": {
+    "message": "在 $sec$s 后打开",
+    "description": "",
+    "placeholders": {
+      "sec": {
+        "content": "$1",
+        "example": "59"
+      }
+    }
+  },
+  "timeLeftSeconds": {
+    "message": "$sec$s 剩余",
+    "description": "",
+    "placeholders": {
+      "sec": {
+        "content": "$1",
+        "example": "59"
+      }
+    }
+  },
+  "error_FILE_FAILED": {
+    "message": "文件失败",
+    "description": ""
+  },
+  "error_FILE_ACCESS_DENIED": {
+    "message": "拒绝访问",
+    "description": ""
+  },
+  "error_FILE_NO_SPACE": {
+    "message": "磁盘空间不足",
+    "description": ""
+  },
+  "error_FILE_NAME_TOO_LONG": {
+    "message": "文件名称太长",
+    "description": ""
+  },
+  "error_FILE_TOO_LARGE": {
+    "message": "文件太大了",
+    "description": ""
+  },
+  "error_FILE_VIRUS_INFECTED": {
+    "message": "发现病毒感染",
+    "description": ""
+  },
+  "error_FILE_TRANSIENT_ERROR": {
+    "message": "Transient File-System Error",
+    "description": ""
+  },
+  "error_FILE_BLOCKED": {
+    "message": "文件被阻止",
+    "description": ""
+  },
+  "error_FILE_SECURITY_CHECK_FAILED": {
+    "message": "安全检查失败",
+    "description": ""
+  },
+  "error_FILE_TOO_SHORT": {
+    "message": "文件太短",
+    "description": ""
+  },
+  "error_NETWORK_FAILED": {
+    "message": "网络失败",
+    "description": ""
+  },
+  "error_NETWORK_TIMEOUT": {
+    "message": "网络超时",
+    "description": ""
+  },
+  "error_NETWORK_DISCONNECTED": {
+    "message": "网络未连接",
+    "description": ""
+  },
+  "error_NETWORK_SERVER_DOWN": {
+    "message": "服务器关闭",
+    "description": ""
+  },
+  "error_SERVER_FAILED": {
+    "message": "服务器故障",
+    "description": ""
+  },
+  "error_SERVER_NO_RANGE": {
+    "message": "服务器不在范围",
+    "description": ""
+  },
+  "error_SERVER_PRECONDITION": {
+    "message": "Server Precondition Failure",
+    "description": ""
+  },
+  "error_SERVER_BAD_CONTENT": {
+    "message": "错误内容",
+    "description": ""
+  },
+  "error_USER_CANCELED": {
+    "message": "取消",
+    "description": ""
+  },
+  "error_USER_SHUTDOWN": {
+    "message": "取消",
+    "description": ""
+  },
+  "error_CRASH": {
+    "message": "奔溃",
+    "description": ""
+  },
+  "error_1": {
+    "message": "文件失败",
+    "description": ""
+  },
+  "error_2": {
+    "message": "文件系统访问被拒绝",
+    "description": ""
+  },
+  "error_3": {
+    "message": "磁盘空间不足",
+    "description": ""
+  },
+  "error_5": {
+    "message": "文件名称太长",
+    "description": ""
+  },
+  "error_6": {
+    "message": "文件太大",
+    "description": ""
+  },
+  "error_7": {
+    "message": "病毒感染",
+    "description": ""
+  },
+  "error_10": {
+    "message": "瞬态文件系统错误",
+    "description": ""
+  },
+  "error_11": {
+    "message": "文件被阻止",
+    "description": ""
+  },
+  "error_12": {
+    "message": "安全检查失败",
+    "description": ""
+  },
+  "error_13": {
+    "message": "文件太短",
+    "description": ""
+  },
+  "error_20": {
+    "message": "网络故障",
+    "description": ""
+  },
+  "error_21": {
+    "message": "网络超时",
+    "description": ""
+  },
+  "error_22": {
+    "message": "网络已断开连接",
+    "description": ""
+  },
+  "error_23": {
+    "message": "服务器关闭",
+    "description": ""
+  },
+  "error_30": {
+    "message": "服务器故障",
+    "description": ""
+  },
+  "error_31": {
+    "message": "服务器无范围",
+    "description": ""
+  },
+  "error_32": {
+    "message": "服务器前提条件失败",
+    "description": ""
+  },
+  "error_33": {
+    "message": "错误内容",
+    "description": ""
+  },
+  "error_40": {
+    "message": "取消",
+    "description": ""
+  },
+  "error_41": {
+    "message": "取消",
+    "description": ""
+  },
+  "error_50": {
+    "message": "奔溃",
+    "description": ""
+  },
+  "errorRemoved": {
+    "message": "移除",
+    "description": ""
+  },
+  "showInFolderTitle": {
+    "message": "在文件夹中显示",
+    "description": "Alt text for show in folder icon"
+  }
+}

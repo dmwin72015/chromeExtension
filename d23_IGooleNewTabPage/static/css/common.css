@@ -1,0 +1,23 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body, p, h1, h2, h3, h4, h5 ,dl,dd{
+    margin: 0;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a:active,
+a:hover {
+    outline-width: 0;
+}
+img{max-width: 100%}
+*{
+    box-sizing: border-box;
+}

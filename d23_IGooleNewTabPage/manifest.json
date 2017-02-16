@@ -1,0 +1,27 @@
+{
+  "author": "dongmin",
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "version": "0.1",
+  "manifest_version": 2,
+  "default_locale": "zh_CN",
+  "background": {
+    "scripts": [
+      "backgroud.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs",
+    "system.cpu",
+    "system.memory",
+    "system.storage",
+    "downloads",
+    "cookies"
+  ],
+  "options_page": "options.html",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://sp0.baidu.com/* chrome-extension://fecfliedponhlgioigfhfgjpnfhpmbhf/static/js/index.js ; object-src 'self'"
+}
