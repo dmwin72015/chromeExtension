@@ -394,4 +394,4 @@ define('init', function(require, exports, module) {
 });
 //canvas 时钟
 
-require(['init', 'sidebar','weather']);
+require(['init', 'sidebar','colorClock']);

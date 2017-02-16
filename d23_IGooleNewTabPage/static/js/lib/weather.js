@@ -1,14 +1,3 @@
-/*
-	@description
-	这个demo是从网上的一个电子时钟，改变借鉴（其实就是抄）过来的，但是并不是照搬过来的，
-	我个人改进的地方：（不一定对）
-	1、将时、分、秒、冒号分为不同的canvas
-	   理由：原来的例子，是放在了同一个canvas上面，这样会导致canvas在不断的重新绘制所有的数字，而我的只需要重新绘制需要的部分（局部刷新），这样可以减少计算量。
-	2、控制彩球的数量
-	   理由：原来的例子，彩色是小球在不断的增加，如果这个页面一直不关闭，后果可想而知。
-	3、分层（这个不知道对不对）
-	   理由：彩色小球和时钟小球不在同一个canvas中。
-*/
 define('weather', function(require, exports, module) {
     var global = window,
         $ = jQuery,
@@ -313,7 +302,7 @@ define('weather', function(require, exports, module) {
 
         console.log(colorBalls);
     }
-    initColorBalls();
+    // initColorBalls();
     var offsetX = 0.5,
         offsetY = 0.5,
         vy = 5;
@@ -335,6 +324,6 @@ define('weather', function(require, exports, module) {
         }
         requestAnimationFrame(updateColorsBalls);
     }
-    updateColorsBalls();
-    setInterval(initColorBalls, 2000);
+    // updateColorsBalls();
+    // setInterval(initColorBalls, 2000);
 });

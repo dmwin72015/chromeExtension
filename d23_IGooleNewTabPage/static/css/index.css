@@ -45,8 +45,8 @@ input {
     left: 0;
     top: 0;
 }
-#bg .inner{
-    width:100%;
+#bg .inner {
+    width: 100%;
     height: 100%;
 }
 #bg.blur .inner {
@@ -450,11 +450,8 @@ input {
 #hardware .val {
     font-weight: 200;
 }
-#bg .clock {
+#bg #clock {
     position: absolute;
-    /*    left:0;
-    top:0;*/
-}
-#bg .clock>.num {
-    float: left;
+    left: 0;
+    top: 0;
 }
