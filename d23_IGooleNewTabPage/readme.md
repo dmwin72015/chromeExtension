@@ -21,8 +21,28 @@
 	这个方法在数据量较小的情况下，心性能不会有太大影响。
 	但是经过我自己测试，循环10000+次的时候，就会有明显的卡顿行为。
 
-2、放弃使用多个canvas，改为一个canvas，然后刷新局部。 
+2、放弃使用多个canvas，改为一个canvas，然后刷新局部。局部代码如下 
 
-
-
-
+``` javascript
+        function drawNumberOffCanvas(canvas_wrap) {
+            var canvas = canvas_wrap.canvas;
+            var ctx = canvas.getContext('2d');
+            var numBallMap = canvas_wrap.numBallMap;
+            ctx.fillStyle = canvas_wrap.style;
+            ctx.beginPath();
+            for (var i = 0; i < numBallMap.length; i++) {
+                ctx.moveTo(numBallMap[i].x + numBallMap[i].r, numBallMap[i].y);
+                ctx.arc(numBallMap[i].x, numBallMap[i].y, numBallMap[i].r, 0, 2 * Math.PI);
+            }
+            ctx.closePath();
+            ctx.fill();
+            canvas_wrap.hasDraw = true;
+            $('#bg').append(canvas);
+            return canvas_wrap;
+        }
+```
+  这个方法的功能是绘制每一个离线的canvas，而且是把所有的小球都绘制玩之后，才去fill。
+  但是这种情况下，在循环中，应该每次都beginPath().防止fill的时候，应为上次的路径没有闭合，导致下次绘制在以前的路径中，然后最后fill的时候，就会出现和预期结果不一致，尤其在路径复杂的时候，填充路径比较那一预料。
+  可是！可是！可是！
+  这个却没有出现应该有的正确结果，出现了错误的想要的结果。
+  我再次测试的时候却无法重现！！！
