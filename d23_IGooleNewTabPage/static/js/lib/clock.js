@@ -176,7 +176,6 @@ define('clock', function(require, exports, module) {
                 }
             }
             render(context);
-            console.log(balls.length);
         }, 50);
     }
 
