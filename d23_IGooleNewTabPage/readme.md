@@ -46,4 +46,3 @@ function drawNumberOffCanvas(canvas_wrap) {
   可是！可是！可是！
   这个却没有出现应该有的正确结果，出现了错误的想要的结果。
   我再次测试的时候却无法重现！！！
->>>>>>> 5eb07d5d5d97a53e13f1173aa030fff817f5591a
