@@ -158,7 +158,6 @@ define('colorClock', function(require, exports, module) {
     var ballPadding = 5;
     var rowNum = digit[0].length;
 
-
     //设置clock的位置
     var canvas = $('#clock')[0];
     canvas.width = GLOBAL_W;
@@ -175,13 +174,14 @@ define('colorClock', function(require, exports, module) {
             h: hour,
             m: minute,
             s: second,
+            ms: oD.getTime(),
             str: str
         }
     }
-    /********    保存离屏画布 思路二  ************/
-    /***
+    /********    
+        保存离屏画布 思路二  
         保存每一个数字 以及冒号（:）的canvas ，当做缓存，下次使用，直接获取，不需要每次来绘制。
-    ***/
+    ************/
     var OFF_CANVAS = {}; //offCanvasNew
     var numRowsNew = 10;
     var numColsNew = [7, 7, 4, 7, 7, 4, 7, 7]; //时 ：分 ：秒的列数,
@@ -209,9 +209,8 @@ define('colorClock', function(require, exports, module) {
             tmp.h = calcHeight(numRowsNew);
             tmp.canvas.width = tmp.w;
             tmp.canvas.height = tmp.h;
-            tmp.style = COLORS[6];
+            tmp.style = COLORS[0];
             OFF_CANVAS[i] = drawNumberOffCanvas(tmp);
-            break;
         }
 
         //根据digit数组算出需要绘制小球的位置（相当于计算出小球地图，每个数字对应一个。包括冒号）
@@ -224,7 +223,7 @@ define('colorClock', function(require, exports, module) {
                             x: ballPadding + ballRadius * (2 * j + 1) + ballMargin * j,
                             y: ballPadding + ballRadius * (2 * i + 1) + ballMargin * i,
                             r: ballRadius,
-                            color: style || COLORS[3]
+                            color: style || COLORS[0]
                         });
                     }
                 }
@@ -245,7 +244,6 @@ define('colorClock', function(require, exports, module) {
             ctx.closePath();
             ctx.fill();
             canvas_wrap.hasDraw = true;
-            $('#bg').append(canvas);
             return canvas_wrap;
         }
     }
@@ -257,34 +255,24 @@ define('colorClock', function(require, exports, module) {
     function calcHeight(rows) {
         return ballPadding * 2 + (rows - 1) * ballMargin + rows * ballRadius * 2;
     }
-
-
-    ~function test() {
-        initOffCanvasNew();
-    }()
-
+    initOffCanvasNew();
+    renderAll();
 
     function renderAll() {
-        initOffCanvasNew();
-        var cvs = $('#clock')[0],
-            ctx = cvs.getContext('2d');
+        var ctx = canvas.getContext('2d');
         var preOD = getDateStr(),
             preStr = preOD.str,
             preSecond = preOD.s,
             preMinute = preOD.m,
-            preHour = preOD.h;
-        for (var i = 0; i < preStr.length; i++) {
-            var num = isNaN(preStr.charAt(i) - 0) ? 10 : preStr.charAt(i) - 0;
-            drawNumber(num, i, false);
-        }
-
+            preHour = preOD.h,
+            preMs = preOD.ms;
+        //绘制普通小球
         function drawNumber(num, pos, isClear) {
             if (isClear) {
                 ctx.clearRect(DATE_NUMBER_LOC[pos].x, DATE_NUMBER_LOC[pos].y, DATE_NUMBER_LOC[pos].w, DATE_NUMBER_LOC[pos].h);
             }
             ctx.drawImage(OFF_CANVAS[num].canvas, DATE_NUMBER_LOC[pos].x, DATE_NUMBER_LOC[pos].y);
         }
-
         //添加彩色小球之后，放弃使用定时器。使用requestAnimationFrame
         var colorBalls = [];
 
@@ -302,26 +290,7 @@ define('colorClock', function(require, exports, module) {
                 })
             }
         }
-        //跟新彩色小球的位置
-        function updateColorBall() {
-            var w = cvs.width,
-                h = cvs.height;
-            for (var i = 0; i < colorBalls.length; i++) {
-                var ball = colorBalls[i];
-                ball.x += ball.vx;
-                ball.y += ball.vy;
-                ball.vy += ball.g;
-                if (ball.y + ball.r >= w) {
-                    ball.y = h - ball.r;
-                    ball.vy = -ball.vy * 0.6;
-                }
-                if (ball.x - ball.r <= 50 || ball.x + ball.r >= w - 50) {
-                    colorBalls.splice(i, 1);
-                    i--;
-                }
-            }
-        }
-
+        //绘制彩色小球
         function drawColorBall() {
             for (var i = 0, len = colorBalls.length; i < len; i++) {
                 ctx.beginPath();
@@ -332,8 +301,7 @@ define('colorClock', function(require, exports, module) {
             }
         }
         //跟新小球的位置
-        function updateColorsBalls() {
-            ctx.clearRect(0, 0, cvs.width, cvs.height);
+        function updateColorBall() {
             for (var i = 0; i < colorBalls.length; i++) {
                 colorBalls[i].x += colorBalls[i].vx;
                 colorBalls[i].y += colorBalls[i].vy;
@@ -347,81 +315,46 @@ define('colorClock', function(require, exports, module) {
                     i--;
                 }
             }
-            requestAnimationFrame(updateColorsBalls);
         }
-        var timer = setInterval(function() {
+        //方式一： 使用 requestAnimationFrame 循环
+        function intervalFrame() {
             var currOD = getDateStr(),
                 currStr = currOD.str,
                 currSecond = currOD.s,
                 currMinute = currOD.m,
                 currHour = currOD.h;
-            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (var i = 0; i < currStr.length; i++) {
                 var num = isNaN(currStr.charAt(i) - 0) ? 10 : currStr.charAt(i) - 0;
                 drawNumber(num, i, false);
             }
-
             if (preSecond != currSecond) {
                 addColorBall(parseInt(currStr.charAt(DATE_INDEX.s2)), DATE_INDEX.s2);
-                //判断 小时 第一位
-                if (parseInt(currHour / 10) != parseInt(preHour / 10)) {
+                if (parseInt(currHour / 10) != parseInt(preHour / 10)) { //判断 小时 第一位
                     addColorBall(parseInt(currHour / 10), DATE_INDEX.h1);
                 }
-                //判断 小时 第二位
-                if (h2 = parseInt(currHour % 10) != parseInt(preHour % 10)) {
+                if (h2 = parseInt(currHour % 10) != parseInt(preHour % 10)) { //判断 小时 第二位
                     addColorBall(parseInt(currHour % 10), DATE_INDEX.h2);
                 }
-                //判断 分钟 第一位
-                if (parseInt(currMinute / 10) != parseInt(preMinute / 10)) {
+                if (parseInt(currMinute / 10) != parseInt(preMinute / 10)) { //判断 分钟 第一位
                     addColorBall(parseInt(currMinute / 10), DATE_INDEX.m1);
                 }
-                //判断 分钟 第二位
-                if (parseInt(currMinute % 10) != parseInt(preMinute % 10)) {
+                if (parseInt(currMinute % 10) != parseInt(preMinute % 10)) { //判断 分钟 第二位
                     addColorBall(parseInt(currMinute % 10), DATE_INDEX.m2);
                 }
-                //判断 秒钟 第一位
-                if (parseInt(currSecond / 10) != parseInt(preSecond / 10)) {
+                if (parseInt(currSecond / 10) != parseInt(preSecond / 10)) { //判断 秒钟 第一位
                     addColorBall(parseInt(currSecond / 10), DATE_INDEX.s1);
                 }
             }
             preSecond = currSecond;
             preMinute = currMinute;
             preHour = currHour;
-            // drawColorBall();
-            // updateColorBall();
-            // clearInterval(timer);
-        }, 17);
+            preMs = currOD.ms;
+            drawColorBall();
+            updateColorBall();
+            requestAnimationFrame(intervalFrame);
+        };
+        intervalFrame();
     }
-
     // renderAll();
-
-    // 没有添加彩色小球时的方案
-    /* 
-        对于时间变化判断的问题：
-        1.用判断时、分、秒第二位为0 ，但是如果添加断点调试没就会出现，跳过判断的问题
-        2.使用动画小球时不太友好，需要调整定时器的事件间隔，但是调整事件间隔之后也可能会出现【1】中问题。
-        所以放弃使用这种方案
-    */
-    /*window.setInterval(function() {
-        var tmp = getDateStr(),
-            second = tmp.s,
-            minute = tmp.m,
-            str = tmp.src;
-        if (second == 0) { // 判断秒为0 ，重新绘制分钟
-            if (str.charAt(DATE_INDEX.m2) == '0') {
-                drawNumber(parseInt(str.charAt(DATE_INDEX.m1)), DATE_INDEX.m1, true);
-            }
-            drawNumber(parseInt(str.charAt(DATE_INDEX.m2)), DATE_INDEX.m2, true);
-        }
-        if (minute == 0) { // 判断分钟为0 ，重新绘制小时
-            if (str.charAt(DATE_INDEX.h2) == '0') {
-                drawNumber(parseInt(str.charAt(DATE_INDEX.h1)), DATE_INDEX.h1, true);
-            }
-            drawNumber(parseInt(str.charAt(DATE_INDEX.h2)), DATE_INDEX.h2, true);
-        }
-        if (str.charAt(DATE_INDEX.s2) == '0') {
-            drawNumber(parseInt(str.charAt(DATE_INDEX.s1)), DATE_INDEX.s1, true);
-        }
-        drawNumber(parseInt(str.charAt(DATE_INDEX.s2)), DATE_INDEX.s2, true);
-    }, 1000);*/
 });

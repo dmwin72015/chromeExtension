@@ -216,6 +216,7 @@ input {
     right: -240px;
     background-color: rgba(0, 0, 0, .73);
     transition: all 0.3s;
+    z-index: 100;
 }
 .sidebar.r.show {
     right: 0;
