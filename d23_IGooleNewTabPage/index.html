@@ -6,114 +6,154 @@
     <title>我的最爱</title>
     <link rel="stylesheet" href="static/css/common.css">
     <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/weather/main.css">
     <script src="static/js/mod.js"></script>
 </head>
 
 <body>
-    <div id="bg" class="page-wraper">
-        <div class="inner" style="">
-            <canvas id="clock"></canvas>
-        </div>
+<div id="bg" class="page-wraper">
+    <canvas id="clock"></canvas>
+    <div class="panel" id="weather">
+        <section class="today">
+            <div class="weather-icon">
+                <img src="static/img/weather/day/14.png" alt="">
+            </div>
+            <div class="weather-detail">
+                <p class="item dateTime">
+                    <span class="date">2017/10/12</span>
+                    <span class="week">星期二</span>
+                </p>
+                <p class="item temp">
+                    22 ºC
+                </p>
+                <p class="item location">
+                    <span class="subitem">小雪</span>
+                    <span class="subitem" id="cityname">北京</span>
+                </p>
+                <p class="item otherinfo">
+                    <span class="subitem pm25 danger">
+                        <span class="name">PM2.5</span>
+                        <span class="val ">234</span>
+                    </span>
+                    <span class="subitem wind">
+                        <span class="name">风速</span>
+                        <span class="val">4-5级</span>
+                    </span>
+                    <span class="subitem humdity">
+                        <span class="name">湿度</span>
+                        <span class="val">64%</span>
+                    </span>
+                </p>
+            </div>
+        </section>
+        <section class="future">
+
+        </section>
     </div>
-    <div id="content" class="page-wraper">
-        <div class="clearfix" id="search">
-            <!--<div class="logo"></div>-->
-            <div class="search-form ">
-                <form action="">
+    <div class="inner" style=""></div>
+</div>
+<div id="content" class="page-wraper">
+    <div class="clearfix" id="search">
+        <!--<div class="logo"></div>-->
+        <div class="search-form ">
+            <form action="">
                     <span class="fbg swdp-wrap">
                     <input type="text" id="swd" autocomplete="off">
                 </span>
                     <span class="fbg sbt-wrap">
                     <input type="button" value="搜索" id="sbt">
                 </span>
-                </form>
-                <div class="allsug hide">
-                    <ul id="sugglist"></ul>
-                </div>
+            </form>
+            <div class="allsug hide">
+                <ul id="sugglist"></ul>
             </div>
         </div>
     </div>
-    <div class="sidebar r" id="rsidebar">
-        <p class="tab btn">
-            <span class="tabopt " data-content="notice">通知</span>
-            <span class="tabopt active" data-content="functions">功能</span>
-        </p>
-        <div class="content">
-            <div class="content-opt hide" data-content="notice">
-                <dl class="notice-list">
-                    <dt class="date"> 今天 <i class="close"></i></dt>
-                    <dd class="notice-opt">
-                        <p class="notice-title">
-                            迅雷
-                        </p>
-                        <div class="notice-content">
-                            今天又36个软件需要更新
-                        </div>
-                    </dd>
-                    <dd class="notice-opt">
-                        <p class="notice-title">
-                            优酷
-                        </p>
-                        <div class="notice-content">
-                            最新上线20几电视剧
-                        </div>
-                    </dd>
-                    <dd class="notice-opt">
-                        <p class="notice-title">
-                            优酷
-                        </p>
-                        <div class="notice-content">
-                            最新上线20几电视剧
-                        </div>
-                    </dd>
-                </dl>
-            </div>
-            <div class="content-opt fn " data-content="functions">
-                <div class="fn-group">
-                    <section class="fn-opt">
-                        <a class="fn-logo" href="javascript:;">
-                            <img src="static/img/huaban.png" alt="">
-                        </a>
-                        <p class="fn-name">设置</p>
-                    </section>
-                    <section class="fn-opt">
-                        <a class="fn-logo" href="javascript:;">
-                            <img src="static/img/huaban.png" alt="">
-                        </a>
-                        <p class="fn-name">花瓣4</p>
-                    </section>
-                    <section class="fn-opt">
-                        <a class="fn-logo" href="##">
-                            <img src="static/img/huaban.png" alt="">
-                        </a>
-                        <p class="fn-name">花瓣4</p>
-                    </section>
-                    <section class="fn-opt">
-                        <a class="fn-logo" href="javascript:;">
-                            <img src="static/img/huaban.png" alt="">
-                        </a>
-                        <p class="fn-name">花瓣4</p>
-                    </section>
-                </div>
-            </div>
-            <div></div>
+</div>
+<div class="sidebar r" id="rsidebar">
+    <p class="tab btn">
+        <span class="tabopt " data-content="notice">通知</span>
+        <span class="tabopt active" data-content="functions">功能</span>
+    </p>
+    <div class="content">
+        <div class="content-opt hide" data-content="notice">
+            <dl class="notice-list">
+                <dt class="date"> 今天 <i class="close"></i></dt>
+                <dd class="notice-opt">
+                    <p class="notice-title">
+                        迅雷
+                    </p>
+                    <div class="notice-content">
+                        今天又36个软件需要更新
+                    </div>
+                </dd>
+                <dd class="notice-opt">
+                    <p class="notice-title">
+                        优酷
+                    </p>
+                    <div class="notice-content">
+                        最新上线20几电视剧
+                    </div>
+                </dd>
+                <dd class="notice-opt">
+                    <p class="notice-title">
+                        优酷
+                    </p>
+                    <div class="notice-content">
+                        最新上线20几电视剧
+                    </div>
+                </dd>
+            </dl>
         </div>
-        <footer class="bar-foot">
-            <span class="item add"></span>
-            <span class="item del"></span>
-        </footer>
-        <div class="setting" id="setbtn">
-            <span class="r"></span>
-            <span class="l"></span>
+        <div class="content-opt fn " data-content="functions">
+            <div class="fn-group">
+                <section class="fn-opt">
+                    <a class="fn-logo" href="javascript:;">
+                        <img src="static/img/huaban.png" alt="">
+                    </a>
+                    <p class="fn-name">设置</p>
+                </section>
+                <section class="fn-opt">
+                    <a class="fn-logo" href="javascript:;">
+                        <img src="static/img/huaban.png" alt="">
+                    </a>
+                    <p class="fn-name">花瓣4</p>
+                </section>
+                <section class="fn-opt">
+                    <a class="fn-logo" href="##">
+                        <img src="static/img/huaban.png" alt="">
+                    </a>
+                    <p class="fn-name">花瓣4</p>
+                </section>
+                <section class="fn-opt">
+                    <a class="fn-logo" href="javascript:;">
+                        <img src="static/img/huaban.png" alt="">
+                    </a>
+                    <p class="fn-name">花瓣4</p>
+                </section>
+            </div>
         </div>
+        <div></div>
     </div>
+    <footer class="bar-foot">
+        <span class="item add"></span>
+        <span class="item del"></span>
+    </footer>
+    <div class="setting" id="setbtn">
+        <span class="r"></span>
+        <span class="l"></span>
+    </div>
+</div>
 </body>
-<script src="static/js/jquery-3.1.1.min.js"></script>
+<script src="static/js/jquery3.1.1.min.js"></script>
 <script src="static/js/lib/keyCode.js"></script>
 <script src="static/js/lib/tool-class.js"></script>
 <script src="static/js/lib/jqueryCookie.js"></script>
-<!-- <script src="static/js/lib/clock.js"></script> -->
 <script src="static/js/lib/colorClock.js"></script>
+<script src="static/js/lib/hmac-sha1.js"></script>
+<script src="static/js/custom/weather/china-city-listData.js"></script>
+<script src="static/js/custom/weather/pic_data.js"></script>
+<script src="static/js/custom/weather/hefeng-weather.js"></script>
 <script src="static/js/index.js"></script>
 
 </html>

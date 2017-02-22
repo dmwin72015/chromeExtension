@@ -1,15 +1,17 @@
 /**
  * Created by mjj on 17/1/22.
  */
-chrome.system.cpu.getInfo(function (cpu) {
-    console.log(cpu);
+chrome.runtime.onMessage.addListener(function (msg, render, response) {
+    console.log(msg);
+
+    localStorage.setItem('kk', 'kkk');
+
+    response({
+        code: 1,
+        success: true
+    })
 });
 
-chrome.system.memory.getInfo(function (memory) {
-    console.log(memory);
-});
+function saveData() {
 
-chrome.system.storage.getInfo(function (storage) {
-    console.log(storage);
-
-});
+}

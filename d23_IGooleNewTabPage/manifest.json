@@ -5,23 +5,42 @@
   "version": "0.1",
   "manifest_version": 2,
   "default_locale": "zh_CN",
+  "icons": {
+    "128": "static/img/logo.png"
+  },
+  "browser_action": {
+    "default_icon": "static/img/logo.png",
+    "default_popup": "popup.html"
+  },
   "background": {
     "scripts": [
-      "backgroud.js"
+      "backgroud.js",
+      "static/js/jquery3.1.1.min.js"
     ],
     "persistent": false
   },
+  //  "content_scripts": {
+  ////    "matches": [
+  ////      "*.360.cn/"
+  ////    ],
+  ////    "js":["static/js/custom/funck360.js"]
+  //  },
   "permissions": [
     "tabs",
     "system.cpu",
     "system.memory",
     "system.storage",
     "downloads",
-    "cookies"
+    "cookies",
+    "storage",
+    "proxy",
+    "http://cdn.weather.hao.360.cn/",
+    "http://tq.360.cn/",
+    "https://free-api.heweather.com"
   ],
   "options_page": "options.html",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://sp0.baidu.com chrome-extension://fecfliedponhlgioigfhfgjpnfhpmbhf/static/js/index.js ; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://sp0.baidu.com  chrome-extension://fecfliedponhlgioigfhfgjpnfhpmbhf/static/js/index.js ; object-src 'self'"
 }

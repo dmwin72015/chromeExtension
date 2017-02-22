@@ -1,0 +1,63 @@
+#weather {
+    left: 50%;
+    top: 30px;
+    font-size: 14px;
+}
+
+#weather .today {
+    display: flex;
+    align-items: center;
+}
+#weather .weather-icon{
+    margin-right: 10px;
+
+}
+#weather .weather-detail {
+    width: 160px;
+}
+
+#weather .item {
+    padding: 8px 0;
+}
+
+#weather .item > .subitem {
+    flex: 1;
+    text-align: center;
+}
+
+#weather .item > span:nth-child(n+2) {
+    /*border-left: 1px solid #C0C0C0;*/
+}
+
+#weather .subitem > span {
+    display: block;
+    text-align: center;
+}
+#weather .otherinfo {
+    display: flex;
+}
+#weather .pm25.danger{
+    color: #ff0000;
+}
+#weather .dateTime > span {
+    display: block;
+    text-align: right;
+}
+
+#weather .temp {
+    text-align: center;
+    font-size: 28px;
+    border-bottom: 1px solid #C0C0C0;
+    border-top: 1px solid #C0C0C0;
+}
+
+#weather .location {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #C0C0C0;
+}
+
+#weather #cityname {
+    font-size: 18px;
+    font-weight: 900;
+}

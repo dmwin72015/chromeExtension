@@ -405,5 +405,4 @@ define('colorClock', function (require, exports, module) {
         }
     };
     var bclock = new BallClock();
-    console.log(bclock)
 });

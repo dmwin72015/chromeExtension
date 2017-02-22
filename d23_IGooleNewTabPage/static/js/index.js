@@ -17,7 +17,7 @@
  *   @mySug.renderCallback - 渲染完成回调函数
  *   @mySug.selectCallback - 选中之后回调函数
  * */
-define('index', function(require, exports, module) {
+define('index', function (require, exports, module) {
     var global = window,
         $ = jQuery,
         doc = window.document;
@@ -49,9 +49,12 @@ define('index', function(require, exports, module) {
             that.sugSelectClassName = opt.sugSelectClass || '',
             that.wrap = opt.wrap || (that.ipt && that.ipt.parentNode) || doc,
             that.cacheType = opt.cacheType || cacheType.MEMORY,
-            that.renderCallback = function() {},
-            that.selectCallback = function() {},
-            that.searchFail = opt.searchFail || function() {},
+            that.renderCallback = function () {
+            },
+            that.selectCallback = function () {
+            },
+            that.searchFail = opt.searchFail || function () {
+                },
             that.suggListWrap = doc.querySelector('#sugglist');
 
         that.init(opt);
@@ -60,20 +63,20 @@ define('index', function(require, exports, module) {
 
     mySug.prototype = {
         /*更新搜索数据*/
-        updateInitData: function(query) {
+        updateInitData: function (query) {
 
         },
         /*显示建议列表*/
-        showSugg: function() {
+        showSugg: function () {
             tClass.removeClass(this.suggListWrap.parentNode, 'hide');
         },
         /*隐藏建议列表*/
-        hideSugg: function() {
+        hideSugg: function () {
             tClass.addClass(this.suggListWrap.parentNode, 'hide');
             this.sugIndex = -1;
         },
         /*渲染sugg列表*/
-        renderSug: function() {
+        renderSug: function () {
             var that = this;
             var container = this.suggListWrap;
             var sugglist = this.getCache(this.queryValue);
@@ -81,7 +84,7 @@ define('index', function(require, exports, module) {
                 container.innerHTML = _renderTmpl(sugglist);
                 that.showSugg();
             } else {
-                this.search(function(sugglist) {
+                this.search(function (sugglist) {
                     container.innerHTML = _renderTmpl(sugglist);
                     that.showSugg();
                 });
@@ -96,7 +99,7 @@ define('index', function(require, exports, module) {
             }
         },
         /*保存缓存*/
-        saveCache: function(key, value) {
+        saveCache: function (key, value) {
             if (this.cacheType == cacheType.COOKIE) {
                 var cache = JSON.parse(decodeURIComponent($.cookie('SUGGEST_HISTORY') || "{}"));
                 cache[key] = value;
@@ -110,7 +113,7 @@ define('index', function(require, exports, module) {
             }
         },
         /*获取缓存*/
-        getCache: function(key) {
+        getCache: function (key) {
             if (this.cacheType == cacheType.COOKIE) {
                 var cache = JSON.parse(decodeURIComponent($.cookie('SUGGEST_HISTORY') || "{}"));
                 return cache[key] || null;
@@ -122,11 +125,11 @@ define('index', function(require, exports, module) {
             }
         },
         /*清空缓存*/
-        clearCache: function() {
+        clearCache: function () {
             this.dataCache = {};
         },
         /*检测数据变化 @mySug.check*/
-        check: function(searchFlag) {
+        check: function (searchFlag) {
             var that = this,
                 v = that.ipt.value.trim(),
                 qV = that.queryValue;
@@ -142,7 +145,7 @@ define('index', function(require, exports, module) {
             }
         },
         /*搜索*/
-        search: function(cb) {
+        search: function (cb) {
             var that = this;
             that.searching = !0;
             $.ajax({
@@ -150,27 +153,27 @@ define('index', function(require, exports, module) {
                 type: 'get',
                 data: {
                     wd: that.queryValue
-                        // json: '1',
-                        // sid: '1436_21119_18559_20718'
+                    // json: '1',
+                    // sid: '1436_21119_18559_20718'
                 },
                 dataType: 'jsonp',
                 jsonp: 'cb',
-                success: function(data) {
+                success: function (data) {
                     if (data && data.s && data.s.length > 0) {
                         cb && cb(data.s);
                         that.saveCache(that.queryValue, data.s);
                     }
                 },
-                error: function(err) {
+                error: function (err) {
                     that.searchFail.apply(that, arguments);
                 }
-            }).done(function() {
+            }).done(function () {
                 that.searching = !!0;
             });
 
         },
         /*改变样式*/
-        changeIptFocusStyle: function(className, type) {
+        changeIptFocusStyle: function (className, type) {
             if (type == 'focus') {
                 tClass.addClass(this.wrap, className);
                 tClass.addClass(doc.querySelector('#bg'), 'blur');
@@ -183,40 +186,40 @@ define('index', function(require, exports, module) {
             }
         },
         /*改变列表选中样式*/
-        changeSugState: function(direct, className) {
+        changeSugState: function (direct, className) {
             if (tClass.hasClass(this.suggListWrap.parentNode, 'hide')) {
                 return;
             }
             if (direct == 'down') {
-                (this.sugIndex == this.maxNum - 1) ? this.sugIndex = 0: this.sugIndex++;
+                (this.sugIndex == this.maxNum - 1) ? this.sugIndex = 0 : this.sugIndex++;
             } else if (direct == 'up') {
-                (this.sugIndex <= 0) ? this.sugIndex = this.maxNum - 1: this.sugIndex--;
+                (this.sugIndex <= 0) ? this.sugIndex = this.maxNum - 1 : this.sugIndex--;
             }
             tClass.hightSelf(this.suggListWrap.children[this.sugIndex], className);
             this.ipt.value = this.suggListWrap.children[this.sugIndex].dataset['key'];
             // this.queryValue = this.suggListWrap.children[this.sugIndex].getAttribute('data-key');
         },
         /*跳转到搜索页面*/
-        goSearchPage: function(keyword) {
+        goSearchPage: function () {
             var that = this;
             var sToUrl = 'https://www.baidu.com/s?wd=';
-            that.queryValue = keyword || this.queryValue;
+            that.queryValue = that.ipt.value || this.queryValue;
             chrome.tabs.create({
                 url: sToUrl + encodeURIComponent(that.queryValue),
                 active: true
-            }, function(tab) {
+            }, function (tab) {
                 that.ipt.value = '';
             });
         },
         /*初始化 @mySug.check*/
-        init: function() {
+        init: function () {
             var that = this,
                 ipt = that.ipt;
             $(ipt).on({
-                'inputChange': function(ev, data) {
+                'inputChange': function (ev, data) {
                     that.search();
                 },
-                'keydown': function(ev) {
+                'keydown': function (ev) {
                     var selectClassName = that.sugSelectClassName;
                     var keyName = (keyCode[ev.keyCode] || '').trim();
                     //that.check.apply(that, [false]);
@@ -233,30 +236,30 @@ define('index', function(require, exports, module) {
                             break;
                     }
                 },
-                'keyup': function(ev) {
+                'keyup': function (ev) {
                     //TODO:kecode分离出去了
                     var ignoreKey = ['enter', 'down arrow', 'up arrow'];
                     if (ignoreKey.indexOf((keyCode[ev.keyCode] || '').trim()) == -1) {
                         that.check.apply(that, [false]);
                     }
                 },
-                'focus': function(ev) {
+                'focus': function (ev) {
                     that.changeIptFocusStyle(that.focusClassName, ev.type);
                     if (that.ipt.value) {
                         $(that.ipt).trigger('inputChange');
                         $(that.ipt).trigger('keyup');
                     }
                 },
-                'blur': function(ev) {
+                'blur': function (ev) {
                     that.queryValue = '';
                 }
             });
 
-            $(window).blur(function() {
+            $(window).blur(function () {
                 that.hideSugg();
                 that.ipt.blur();
             });
-            $(document).on('click', function(ev) {
+            $(document).on('click', function (ev) {
                 var oSelect = ev.target;
                 if (oSelect && oSelect.tagName == 'LI' && oSelect.parentNode == that.suggListWrap) {
                     that.goSearchPage(oSelect.dataset['key']);
@@ -270,40 +273,44 @@ define('index', function(require, exports, module) {
 
         },
         /*外部调用接口*/
-        outInterface: function() {
+        outInterface: function () {
             var that = this;
             return that.ipt ? {
-                on: function(sEv, cb) {
+                on: function (sEv, cb) {
                     $(that.ipt).on.apply(that.ipt, arguments);
                 },
-                off: function(sEv, cb) {
+                off: function (sEv, cb) {
                     $(that.ipt).off.apply(that.ipt, arguments);
                 },
-                setMaxNum: function(num) {
+                setMaxNum: function (num) {
                     that.maxNum = num;
                 },
-                setFocusStyle: function(className) {
+                setFocusStyle: function (className) {
                     that.focusClassName = className || '';
                 },
-                setSelectClass: function(className) {
+                setSelectClass: function (className) {
                     that.sugSelectClassName = className || '';
                 },
-                setCacheType: function(type) {
+                setCacheType: function (type) {
                     that.cacheType = type || cacheType.LOCALSTORAGE;
                 }
             } : null;
         }
     };
 
-    var oWrap = document.querySelector('#bg .inner');
-    ! function initHardware() {
+
+    module.exports = mySug;
+});
+define('hardware', function () {
+    var oWrap = document.querySelector('#bg');
+    !function initHardware() {
         var sTmpl = '<div id="hardware" class="panel"><table>\
                 <tr><th>CPU</th><td><%cpu%></td></tr>\
                 <tr><th>System</th><td><%system%></td></tr>\
                 <tr><th>Browser</th><td><%browser%></td></tr>\
                 <tr><th>Kernel</th><td><%Kernel%></td></tr>\
             </table></div>';
-        chrome.system.cpu.getInfo(function(cpu) {
+        chrome.system.cpu.getInfo(function (cpu) {
             var detail = cpu.modelName.split(' ');
             var cpuName = detail[2] + '(' + detail[5] + ')';
             sTmpl = sTmpl.replace(/<%cpu%>/i, cpuName);
@@ -330,26 +337,27 @@ define('index', function(require, exports, module) {
         sTmpl = sTmpl.replace(/<%browser%>/i, browser);
         sTmpl = sTmpl.replace(/<%Kernel%>/i, kernel);
     }();
-    module.exports = mySug;
-});
+})
 /*右侧的导航功能*/
-define('sidebar', function(require, exports, module) {
+define('sidebar', function (require, exports, module) {
     var global = window,
         $ = jQuery,
         doc = window.document;
     var tClass = require('lib:toolClass');
     var rSide = doc.querySelector('#rsidebar');
-    $('#setbtn').click(function() {
+    $('#setbtn').click(function () {
         tClass.toggleClass(this, 'active');
         tClass.toggleClass(rSide, 'show');
     });
-    $('.tab').on('click', '.tabopt', function() {
+    $('.tab').on('click', '.tabopt', function () {
         tClass.hightSelf(this, 'active');
         tClass.hightSelf(document.querySelector('.content-opt[data-content="' + this.dataset['content'] + '"]'), 'hide', true);
     });
-
 });
-define('init', function(require, exports, module) {
+define('bgAnimation', function () {
+    //本来想模仿百度云盘首页大图效果,但是返现在chromium中有点卡顿,,chrome中却流畅.所以放弃.
+});
+define('init', function (require, exports, module) {
     var mySug = require('index');
     var sug = new mySug({
         ipt: document.querySelector('#swd'),
@@ -368,7 +376,8 @@ define('init', function(require, exports, module) {
     var movId;
     var digits = ('' + all).split('.')[1].length - 2;
     digits = (digits < 0 || digits > 2) ? 0 : digits;
-    function circlePercent(){};
+    function circlePercent() {
+    };
     function myAnimation() {
         movId = requestAnimationFrame(myAnimation);
         var md = (Date.now() - then) / 1000;
@@ -384,7 +393,8 @@ define('init', function(require, exports, module) {
             cancelAnimationFrame(movId);
         }
     }
-    window.onload = function() {
+
+    window.onload = function () {
         // myAnimation();
     }
 
@@ -394,4 +404,4 @@ define('init', function(require, exports, module) {
 });
 //canvas 时钟
 
-require(['init', 'sidebar','colorClock']);
+require(['init', 'sidebar', 'hardware','hefeng-weather']);
